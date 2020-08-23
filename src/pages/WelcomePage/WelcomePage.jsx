@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/styles";
 import DataCard from "components/DataCard";
 import MyCard from "components/MyCard";
 import MyCardFunctionalComponent from "components/MyCardFunctionalComponent";
+import Drawer from "components/Drawer/Drawer"
+import UsersTable from "components/UsersTable/UsersTable"
 
 import projectData from "../../res/projectData.json";
 
@@ -21,10 +23,17 @@ function WelcomePage() {
     const classes = useStyles();
 
     return (
-        <Grid container spacing={3} className={classes.gridContainerStyles}>
+        <Grid container spacing={4} className={classes.gridContainerStyles}>
             <Grid item xs={3}></Grid>
             <Grid item xs={6}>
-                <DataCard {...projectData} />
+                
+                
+                <Drawer />
+                <div className={classes.separatorStyles} />
+                <UsersTable />
+                
+
+                {/* <DataCard {...projectData} />
 
                 <div className={classes.separatorStyles} />
 
@@ -32,8 +41,12 @@ function WelcomePage() {
 
                 <div className={classes.separatorStyles} />
 
-                <MyCardFunctionalComponent />
+                <MyCardFunctionalComponent />      */}
+
+                           
+                
             </Grid>
+
             <Grid item xs={3}></Grid>
         </Grid>
     );

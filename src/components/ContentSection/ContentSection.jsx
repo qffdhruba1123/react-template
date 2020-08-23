@@ -2,7 +2,7 @@ import React from "react";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-import WelcomePage from "pages/WelcomePage";
+import WelcomePage from "pages/WelcomePage/WelcomePage";
 
 const useStyles = makeStyles(() => ({
     paperStyles: {
@@ -17,6 +17,7 @@ function ContentSection() {
     return (
         <Paper className={classes.paperStyles}>
             <WelcomePage />
+            
         </Paper>
     );
 }
