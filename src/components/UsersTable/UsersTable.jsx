@@ -8,34 +8,16 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
+import { Grid } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 650,
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "120ch",
-    },
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+
 
 const userData = [
   {
@@ -270,6 +252,27 @@ const userData = [
   },
 ];
 
+const useStyles = makeStyles((theme) => ({
+  table: {
+    minWidth: 650,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "120ch",
+      marginTop: theme.spacing(1),
+      marginLeft: theme.spacing(1)
+    },
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 var filtered = userData;
 
 function DenseTable() {
@@ -297,79 +300,94 @@ function DenseTable() {
     <div>
       <Card className={classes.root} variant="outlined">
         <CardContent>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField
-              name="search"
-              floatingLabelText="Search"
-              onChange={change}
-            />
-          </form>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="search_by">Search By</InputLabel>
-            <Select onChange={handleChange}>
-              <MenuItem value="username">Username</MenuItem>
-              <MenuItem value="email">Email</MenuItem>
-              <MenuItem value="name">Name</MenuItem>
-            </Select>
-          </FormControl>
-        </CardContent>
-      </Card>
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <TableContainer component={Paper}>
-            <Table
-              className={classes.table}
-              size="small"
-              aria-label="a dense table"
-            >
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="right">Username</TableCell>
-                  <TableCell align="right">Email</TableCell>
-                  <TableCell align="right">Street</TableCell>
-                  <TableCell align="right">Suite</TableCell>
-                  <TableCell align="right">City</TableCell>
-                  <TableCell align="right">Zipcode</TableCell>
-                  <TableCell align="right">Lat</TableCell>
-                  <TableCell align="right">Long</TableCell>
-                  <TableCell align="right">Phone</TableCell>
-                  <TableCell align="right">Website</TableCell>
-                  <TableCell align="right">Company Name</TableCell>
-                  <TableCell align="right">Company Catch Phrase</TableCell>
-                  <TableCell align="right">Company BS</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filtered.map((user) => (
-                  <TableRow key={user.id}>
-                    <TableCell component="th" scope="row">
-                      {user.name}
-                    </TableCell>
-                    <TableCell align="right">{user.username}</TableCell>
-                    <TableCell align="right">{user.email}</TableCell>
-                    <TableCell align="right">{user.address.street}</TableCell>
-                    <TableCell align="right">{user.address.suite}</TableCell>
-                    <TableCell align="right">{user.address.city}</TableCell>
-                    <TableCell align="right">{user.address.zipcode}</TableCell>
-                    <TableCell align="right">{user.address.geo.lat}</TableCell>
-                    <TableCell align="right">{user.address.geo.lng}</TableCell>
-                    <TableCell align="right">{user.phone}</TableCell>
-                    <TableCell align="right">{user.website}</TableCell>
-                    <TableCell align="right">{user.company.name}</TableCell>
-                    <TableCell align="right">
-                      {user.company.catchPhrase}
-                    </TableCell>
-                    <TableCell align="right">{user.company.bs}</TableCell>
-                    <TableCell align="right">
-                      {" "}
-                      <Button> Page 2 </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <Grid>
+            <Grid item xs={6}>
+              <form className={classes.root} noValidate autoComplete="off">
+                <TextField
+                  name="search"
+                  floatingLabelText="Search"
+                  onChange={change}
+                />
+              </form>
+              <FormControl className={classes.formControl}>
+                <InputLabel id="search_by">Search By</InputLabel>
+                <Select onChange={handleChange}>
+                  <MenuItem value="username">Username</MenuItem>
+                  <MenuItem value="email">Email</MenuItem>
+                  <MenuItem value="name">Name</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+
+          <Grid>
+            <Grid item xs={12}>
+              <TableContainer component={Paper}>
+                <Table
+                  className={classes.table}
+                  size="small"
+                  aria-label="a dense table"
+                >
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell align="right">Username</TableCell>
+                      <TableCell align="right">Email</TableCell>
+                      <TableCell align="right">Street</TableCell>
+                      <TableCell align="right">Suite</TableCell>
+                      <TableCell align="right">City</TableCell>
+                      <TableCell align="right">Zipcode</TableCell>
+                      <TableCell align="right">Lat</TableCell>
+                      <TableCell align="right">Long</TableCell>
+                      <TableCell align="right">Phone</TableCell>
+                      <TableCell align="right">Website</TableCell>
+                      <TableCell align="right">Company Name</TableCell>
+                      <TableCell align="right">Company Catch Phrase</TableCell>
+                      <TableCell align="right">Company BS</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {filtered.map((user) => (
+                      <TableRow key={user.id}>
+                        <TableCell component="th" scope="row">
+                          {user.name}
+                        </TableCell>
+                        <TableCell align="right">{user.username}</TableCell>
+                        <TableCell align="right">{user.email}</TableCell>
+                        <TableCell align="right">
+                          {user.address.street}
+                        </TableCell>
+                        <TableCell align="right">
+                          {user.address.suite}
+                        </TableCell>
+                        <TableCell align="right">{user.address.city}</TableCell>
+                        <TableCell align="right">
+                          {user.address.zipcode}
+                        </TableCell>
+                        <TableCell align="right">
+                          {user.address.geo.lat}
+                        </TableCell>
+                        <TableCell align="right">
+                          {user.address.geo.lng}
+                        </TableCell>
+                        <TableCell align="right">{user.phone}</TableCell>
+                        <TableCell align="right">{user.website}</TableCell>
+                        <TableCell align="right">{user.company.name}</TableCell>
+                        <TableCell align="right">
+                          {user.company.catchPhrase}
+                        </TableCell>
+                        <TableCell align="right">{user.company.bs}</TableCell>
+                        <TableCell align="right">
+                          {" "}
+                          <Button> Page 2 </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
     </div>
