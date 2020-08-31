@@ -9,19 +9,22 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import Paper from "@material-ui/core/Paper";
 
 import WelcomePage from "pages/WelcomePage/WelcomePage";
 import SecondPage from "pages/SecondPage/SecondPage";
 
-
 const drawerWidth = 120;
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    height: "100vh"
+    height: "100vh",
+  },
+  paper_spacing: {
+    padding: theme.spacing(2),
+    flexWrap: "wrap",
+    display: "flex",
   },
   drawer: {
     width: drawerWidth,
@@ -38,44 +41,32 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(1),
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
 }));
 
-const MainPage = props => {
-  const{match, history} = props;
-  const { params } = match;
-  const { page } = params;
+const MainPage = (props) => {
+  
 
-  const tabNameToIndex = {
-    0: "page1",
-    1: "page2"
-  };
+  const [selectedTab, setSelectedTab] = React.useState(0);
 
-  const indexToTabName = {
-    page1: 0,
-    page2: 1
-  };
-
-  const [selectedTab, setSelectedTab] = React.useState(indexToTabName[page]);
-
-  const handleChange = (event, newValue) => {
-    history.push(`/${tabNameToIndex[newValue]}`);
-    setSelectedTab(newValue);
+  const handleChange1 = (newVal) => {
+    setSelectedTab(newVal);
   };
 
   
+
+  const handleChange = (event, newValue) => {
+    setSelectedTab(newValue);
+  };
+
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(true);
 
-  
-
   const clickMenu = () => {
     setOpen(!open);
   };
-
-  
 
   return (
     <div className={classes.root}>
@@ -110,10 +101,14 @@ const MainPage = props => {
           </List>
         </div>
       </Drawer>
-      {selectedTab === 0 && <WelcomePage />}
-      {selectedTab === 1 && <SecondPage />}
+      <main className={classes.content}>
+        <Paper className={classes.paper_spacing}>
+          {selectedTab === 0 && <WelcomePage />}
+          {selectedTab === 1 && <SecondPage changeTab={handleChange1} />}
+        </Paper>
+      </main>
     </div>
   );
-}
+};
 
 export default MainPage;

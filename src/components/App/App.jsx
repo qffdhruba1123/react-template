@@ -9,7 +9,7 @@ import SecondPage from "pages/SecondPage/SecondPage";
 import Drawer from "components/Drawer/Drawer";
 import MainPage from "pages/MainPage/MainPage";
 
-const drawerWidth = 180;
+const drawerWidth = 120;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +18,14 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
+    zIndex: theme.zIndex.drawer + 1,
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
   },
 }));
 
@@ -43,8 +44,12 @@ function App() {
       </AppBar>
       <Drawer />
       <Switch>
-        <Route exact from="/" render={props => <MainPage {...props} />} />
-        <Route exact path="/page2" render={props => <SecondPage {...props} />} />
+        <Route exact from="/" render={(props) => <MainPage {...props} />} />
+        <Route
+          exact
+          path="/page2"
+          render={(props) => <SecondPage {...props} />}
+        />
       </Switch>
     </div>
   );

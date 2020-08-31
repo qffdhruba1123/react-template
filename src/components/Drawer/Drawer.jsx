@@ -3,16 +3,21 @@ import {
   Drawer as MUIDrawer,
   ListItem,
   List,
-  ListItemText
-} from "@material-ui/core";
+  ListItemText} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   drawer: {
-    width: "180px"
-  }
-});
+    width: 180,
+    flexShrink: 0
+  },
+  drawerPaper: {
+    width: 180,
+    backgroundColor: "grey",
+  },
+  toolbar: theme.mixins.toolbar,
+}));
 
 const Drawer = props => {
   const { history } = props;
@@ -28,9 +33,12 @@ const Drawer = props => {
     }
   ];
   return (
-    <MUIDrawer variant="permanent" className={classes.drawer}>
+    <MUIDrawer variant="permanent" className={classes.drawer} classes={{
+      paper: classes.drawerPaper,
+    }}>
+      <div className={classes.toolbar}/>
       <List>
-        {itemsList.map((item, index) => {
+        {itemsList.map((item) => {
           const { text, onClick } = item;
           return (
             <ListItem button key={text} onClick={onClick}>

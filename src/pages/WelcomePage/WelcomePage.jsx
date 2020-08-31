@@ -1,9 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import Paper from "@material-ui/core/Paper";
 import UsersTable from "components/UsersTable/UsersTable";
-
-
+import { Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   gridContainerStyles: {
@@ -14,11 +12,15 @@ const useStyles = makeStyles((theme) => ({
   },
   paper_spacing: {
     padding: theme.spacing(2),
-    
+    flexWrap: "wrap",
+    display: "flex",
   },
   drawer: {
-    width: "180px"
-  }
+    width: "180px",
+  },
+  root: {
+    flexGrow: 1,
+  },
 }));
 
 function WelcomePage() {
@@ -26,11 +28,10 @@ function WelcomePage() {
 
   return (
     <div className={classes.root}>
-
       
-      <Paper className={classes.paper_spacing}>
+        <Toolbar/>
         <UsersTable />
-      </Paper>
+      
     </div>
   );
 }

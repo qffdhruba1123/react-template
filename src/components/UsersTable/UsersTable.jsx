@@ -264,7 +264,12 @@ const useStyles = makeStyles((theme) => ({
       width: "120ch",
       marginTop: theme.spacing(1),
       marginLeft: theme.spacing(1),
+      flexGrow: 1,
     },
+  },
+  container: {
+    overflowY: "auto",
+    maxHeight: 600,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -326,7 +331,7 @@ function DenseTable() {
       
           <Grid>
             <Grid item xs={12}>
-              <TableContainer component={Paper}>
+              <TableContainer className={classes.container} component={Paper}>
                 <Table
                   className={classes.table}
                   size="small"
