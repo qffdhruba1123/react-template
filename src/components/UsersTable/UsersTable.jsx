@@ -17,8 +17,6 @@ import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import { Grid } from "@material-ui/core";
 
-
-
 const userData = [
   {
     id: 1,
@@ -265,7 +263,7 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: "120ch",
       marginTop: theme.spacing(1),
-      marginLeft: theme.spacing(1)
+      marginLeft: theme.spacing(1),
     },
   },
   selectEmpty: {
@@ -297,7 +295,9 @@ function DenseTable() {
   }
 
   return (
+
     <div>
+    <div className={classes.root}>
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Grid>
@@ -319,7 +319,11 @@ function DenseTable() {
               </FormControl>
             </Grid>
           </Grid>
-
+        </CardContent>
+      </Card>
+    </div>
+    <div>
+      
           <Grid>
             <Grid item xs={12}>
               <TableContainer component={Paper}>
@@ -388,8 +392,8 @@ function DenseTable() {
               </TableContainer>
             </Grid>
           </Grid>
-        </CardContent>
-      </Card>
+
+    </div>
     </div>
   );
 }

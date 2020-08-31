@@ -8,6 +8,7 @@ import WelcomePage from "pages/WelcomePage/WelcomePage";
 import { Route, Switch } from "react-router-dom";
 import SecondPage from "pages/SecondPage/SecondPage";
 import Drawer from "components/Drawer/Drawer";
+import MainPage from "pages/MainPage/MainPage";
 
 const drawerWidth = 180;
 
@@ -18,13 +19,6 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -50,7 +44,7 @@ function App() {
       </AppBar>
       <Drawer />
       <Switch>
-        <Route exact from="/" render={props => <WelcomePage {...props} />} />
+        <Route exact from="/" render={props => <MainPage {...props} />} />
         <Route exact path="/page2" render={props => <SecondPage {...props} />} />
       </Switch>
     </div>
