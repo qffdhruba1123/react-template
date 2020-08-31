@@ -16,12 +16,7 @@ import SecondPage from "pages/SecondPage/SecondPage";
 
 const drawerWidth = 120;
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {

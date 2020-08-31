@@ -4,7 +4,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import WelcomePage from "pages/WelcomePage/WelcomePage";
 import { Route, Switch } from "react-router-dom";
 import SecondPage from "pages/SecondPage/SecondPage";
 import Drawer from "components/Drawer/Drawer";
