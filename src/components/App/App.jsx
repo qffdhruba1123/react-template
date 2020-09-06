@@ -8,6 +8,9 @@ import { Route, Switch } from "react-router-dom";
 import SecondPage from "pages/SecondPage/SecondPage";
 import Drawer from "components/Drawer/Drawer";
 import MainPage from "pages/MainPage/MainPage";
+import { Provider } from "react-redux";
+
+import store from "store/store";
 
 const drawerWidth = 120;
 
@@ -33,25 +36,27 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Dashboard
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer />
-      <Switch>
-        <Route exact from="/" render={(props) => <MainPage {...props} />} />
-        <Route
-          exact
-          path="/page2"
-          render={(props) => <SecondPage {...props} />}
-        />
-      </Switch>
-    </div>
+    <Provider store={store}>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar position="fixed" className={classes.appBar}>
+          <Toolbar>
+            <Typography variant="h6" noWrap>
+              Dashboard
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer />
+        <Switch>
+          <Route exact from="/" render={(props) => <MainPage {...props} />} />
+          <Route
+            exact
+            path="/page2"
+            render={(props) => <SecondPage {...props} />}
+          />
+        </Switch>
+      </div>
+    </Provider>
   );
 }
 

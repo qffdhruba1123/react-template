@@ -13,7 +13,9 @@ import Paper from "@material-ui/core/Paper";
 
 import WelcomePage from "pages/WelcomePage/WelcomePage";
 import SecondPage from "pages/SecondPage/SecondPage";
+import { Provider } from "react-redux";
 
+import store from "store/store";
 const drawerWidth = 120;
 
 const useStyles = makeStyles((theme) => ({
@@ -46,15 +48,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MainPage = (props) => {
-  
-
   const [selectedTab, setSelectedTab] = React.useState(0);
 
   const handleChange1 = (newVal) => {
     setSelectedTab(newVal);
   };
-
-  
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -69,45 +67,45 @@ const MainPage = (props) => {
   };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.toolbar} />
-        <div className={classes.drawerContainer}>
-          <List>
-            <ListItem button onClick={clickMenu}>
-              <ListItemText primary="Menu" />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={selectedTab}
-                onChange={handleChange}
-                aria-label="Vertical tabs"
-                className={classes.tabs}
-              >
-                <Tab label="Page 1" />
-                <Tab label="Page 2" />
-              </Tabs>
-            </Collapse>
-          </List>
-        </div>
-      </Drawer>
-      <main className={classes.content}>
-        <Paper className={classes.paper_spacing}>
-          {selectedTab === 0 && <WelcomePage />}
-          {selectedTab === 1 && <SecondPage changeTab={handleChange1} />}
-        </Paper>
-      </main>
-    </div>
+      <div className={classes.root}>
+        <CssBaseline />
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div className={classes.toolbar} />
+          <div className={classes.drawerContainer}>
+            <List>
+              <ListItem button onClick={clickMenu}>
+                <ListItemText primary="Menu" />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <Tabs
+                  orientation="vertical"
+                  variant="scrollable"
+                  value={selectedTab}
+                  onChange={handleChange}
+                  aria-label="Vertical tabs"
+                  className={classes.tabs}
+                >
+                  <Tab label="Page 1" />
+                  <Tab label="Page 2" />
+                </Tabs>
+              </Collapse>
+            </List>
+          </div>
+        </Drawer>
+        <main className={classes.content}>
+          <Paper className={classes.paper_spacing}>
+            {selectedTab === 0 && <WelcomePage />}
+            {selectedTab === 1 && <SecondPage changeTab={handleChange1} />}
+          </Paper>
+        </main>
+      </div>
   );
 };
 
