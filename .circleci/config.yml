@@ -17,7 +17,7 @@ jobs:
                   paths:
                       - ./node_modules
             - run:
-                  command: npm run build
+                  command: npm run --silent build
             - run:
                   command: npm run test
             - run: |

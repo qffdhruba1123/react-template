@@ -18,7 +18,8 @@ import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 import { connect } from "react-redux";
-import {fetchDroovData,
+import {
+  fetchDroovData,
   putDroovData,
   deleteDroovData,
 } from "actions/postAction";
@@ -81,55 +82,57 @@ function UsersTable(props) {
     fetch();
   }, [fetch]);
 
-
   return (
     <div className={classes.root}>
       <CssBaseline />
       <main className={classes.content}>
         <MaterialTable
-        title="Editable Table"
-        icons={tableIcons}
-        columns={state.columns}
-        data={props.data}
-        actions={[
-          {
-            icon: 'save',
-            tooltip: 'Save User',
-            onClick: (event, rowData) => {props.changeTab(1)}
-          }]}
-        options={{
-          actionsColumnIndex: -1
-        }}
-        editable={{
-          onRowAdd: (newData) =>
-            new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                props.putDroovData(newData);
-              }, 600);
-            }),
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                if (oldData) {
-                  setState((prevState) => {
-                    const data = [...prevState.data];
-                    data[data.indexOf(oldData)] = newData;
-                    return { ...prevState, data };
-                  });
-                }
-              }, 600);
-            }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                props.deleteDroovData(oldData.id);
-              }, 600);
-            }),
-        }}
-      />
+          title="Editable Table"
+          icons={tableIcons}
+          columns={state.columns}
+          data={props.data}
+          actions={[
+            {
+              icon: "save",
+              tooltip: "Save User",
+              onClick: (event, rowData) => {
+                props.changeTab(1);
+              },
+            },
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+          }}
+          editable={{
+            onRowAdd: (newData) =>
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve();
+                  props.putDroovData(newData);
+                }, 600);
+              }),
+            onRowUpdate: (newData, oldData) =>
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve();
+                  if (oldData) {
+                    setState((prevState) => {
+                      const data = [...prevState.data];
+                      data[data.indexOf(oldData)] = newData;
+                      return { ...prevState, data };
+                    });
+                  }
+                }, 600);
+              }),
+            onRowDelete: (oldData) =>
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve();
+                  props.deleteDroovData(oldData.id);
+                }, 600);
+              }),
+          }}
+        />
       </main>
     </div>
   );
