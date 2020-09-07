@@ -28,10 +28,8 @@ function WelcomePage() {
 
   return (
     <div className={classes.root}>
-      
-        <Toolbar/>
-        <UsersTable />
-      
+      <Toolbar />
+      <UsersTable />
     </div>
   );
 }

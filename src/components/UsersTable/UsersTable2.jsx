@@ -300,105 +300,98 @@ function DenseTable() {
   }
 
   return (
-
     <div>
-    <div className={classes.root}>
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <Grid>
-            <Grid item xs={6}>
-              <form className={classes.root} noValidate autoComplete="off">
-                <TextField
-                  name="search"
-                  floatingLabelText="Search"
-                  onChange={change}
-                />
-              </form>
-              <FormControl className={classes.formControl}>
-                <InputLabel id="search_by">Search By</InputLabel>
-                <Select onChange={handleChange}>
-                  <MenuItem value="username">Username</MenuItem>
-                  <MenuItem value="email">Email</MenuItem>
-                  <MenuItem value="name">Name</MenuItem>
-                </Select>
-              </FormControl>
+      <div className={classes.root}>
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Grid>
+              <Grid item xs={6}>
+                <form className={classes.root} noValidate autoComplete="off">
+                  <TextField
+                    name="search"
+                    floatingLabelText="Search"
+                    onChange={change}
+                  />
+                </form>
+                <FormControl className={classes.formControl}>
+                  <InputLabel id="search_by">Search By</InputLabel>
+                  <Select onChange={handleChange}>
+                    <MenuItem value="username">Username</MenuItem>
+                    <MenuItem value="email">Email</MenuItem>
+                    <MenuItem value="name">Name</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-    </div>
-    <div>
-      
-          <Grid>
-            <Grid item xs={12}>
-              <TableContainer className={classes.container} component={Paper}>
-                <Table
-                  className={classes.table}
-                  size="small"
-                  aria-label="a dense table"
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="right">Username</TableCell>
-                      <TableCell align="right">Email</TableCell>
-                      <TableCell align="right">Street</TableCell>
-                      <TableCell align="right">Suite</TableCell>
-                      <TableCell align="right">City</TableCell>
-                      <TableCell align="right">Zipcode</TableCell>
-                      <TableCell align="right">Lat</TableCell>
-                      <TableCell align="right">Long</TableCell>
-                      <TableCell align="right">Phone</TableCell>
-                      <TableCell align="right">Website</TableCell>
-                      <TableCell align="right">Company Name</TableCell>
-                      <TableCell align="right">Company Catch Phrase</TableCell>
-                      <TableCell align="right">Company BS</TableCell>
+          </CardContent>
+        </Card>
+      </div>
+      <div>
+        <Grid>
+          <Grid item xs={12}>
+            <TableContainer className={classes.container} component={Paper}>
+              <Table
+                className={classes.table}
+                size="small"
+                aria-label="a dense table"
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell align="right">Username</TableCell>
+                    <TableCell align="right">Email</TableCell>
+                    <TableCell align="right">Street</TableCell>
+                    <TableCell align="right">Suite</TableCell>
+                    <TableCell align="right">City</TableCell>
+                    <TableCell align="right">Zipcode</TableCell>
+                    <TableCell align="right">Lat</TableCell>
+                    <TableCell align="right">Long</TableCell>
+                    <TableCell align="right">Phone</TableCell>
+                    <TableCell align="right">Website</TableCell>
+                    <TableCell align="right">Company Name</TableCell>
+                    <TableCell align="right">Company Catch Phrase</TableCell>
+                    <TableCell align="right">Company BS</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filtered.map((user) => (
+                    <TableRow key={user.id}>
+                      <TableCell component="th" scope="row">
+                        {user.name}
+                      </TableCell>
+                      <TableCell align="right">{user.username}</TableCell>
+                      <TableCell align="right">{user.email}</TableCell>
+                      <TableCell align="right">{user.address.street}</TableCell>
+                      <TableCell align="right">{user.address.suite}</TableCell>
+                      <TableCell align="right">{user.address.city}</TableCell>
+                      <TableCell align="right">
+                        {user.address.zipcode}
+                      </TableCell>
+                      <TableCell align="right">
+                        {user.address.geo.lat}
+                      </TableCell>
+                      <TableCell align="right">
+                        {user.address.geo.lng}
+                      </TableCell>
+                      <TableCell align="right">{user.phone}</TableCell>
+                      <TableCell align="right">{user.website}</TableCell>
+                      <TableCell align="right">{user.company.name}</TableCell>
+                      <TableCell align="right">
+                        {user.company.catchPhrase}
+                      </TableCell>
+                      <TableCell align="right">{user.company.bs}</TableCell>
+                      <TableCell align="right">
+                        {" "}
+                        <Button> Page 2 </Button>
+                      </TableCell>
                     </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {filtered.map((user) => (
-                      <TableRow key={user.id}>
-                        <TableCell component="th" scope="row">
-                          {user.name}
-                        </TableCell>
-                        <TableCell align="right">{user.username}</TableCell>
-                        <TableCell align="right">{user.email}</TableCell>
-                        <TableCell align="right">
-                          {user.address.street}
-                        </TableCell>
-                        <TableCell align="right">
-                          {user.address.suite}
-                        </TableCell>
-                        <TableCell align="right">{user.address.city}</TableCell>
-                        <TableCell align="right">
-                          {user.address.zipcode}
-                        </TableCell>
-                        <TableCell align="right">
-                          {user.address.geo.lat}
-                        </TableCell>
-                        <TableCell align="right">
-                          {user.address.geo.lng}
-                        </TableCell>
-                        <TableCell align="right">{user.phone}</TableCell>
-                        <TableCell align="right">{user.website}</TableCell>
-                        <TableCell align="right">{user.company.name}</TableCell>
-                        <TableCell align="right">
-                          {user.company.catchPhrase}
-                        </TableCell>
-                        <TableCell align="right">{user.company.bs}</TableCell>
-                        <TableCell align="right">
-                          {" "}
-                          <Button> Page 2 </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Grid>
-
-    </div>
+        </Grid>
+      </div>
     </div>
   );
 }

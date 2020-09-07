@@ -8,14 +8,12 @@ import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <ThemeProvider theme={theme}>
-            <Router>
-            <App data-testid="appComponent" />
-
-            </Router>
-            
-        </ThemeProvider>
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <App data-testid="appComponent" />
+      </Router>
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );

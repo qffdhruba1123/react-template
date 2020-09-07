@@ -13,9 +13,7 @@ import Paper from "@material-ui/core/Paper";
 
 import WelcomePage from "pages/WelcomePage/WelcomePage";
 import SecondPage from "pages/SecondPage/SecondPage";
-import { Provider } from "react-redux";
 
-import store from "store/store";
 const drawerWidth = 120;
 
 const useStyles = makeStyles((theme) => ({
